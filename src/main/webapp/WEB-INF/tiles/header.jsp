@@ -54,15 +54,6 @@
 						</c:forEach>
 					</c:otherwise>
 				</c:choose>
-				<li class="pull-right">
-					<s:message code="version" var="version"/>
-					
-					<p class="text-right muted tooltipLeft" data-toggle="tooltip" title="<s:message code="version"/>">
-						<small>
-							<s:message code="system.version" />:&nbsp; ${fn:substring(version, 0, 15)}
-						</small>
-					</p>
-				</li>
 			</ul>
 		</div>	
 	</div>
