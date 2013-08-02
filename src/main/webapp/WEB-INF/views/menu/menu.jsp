@@ -23,6 +23,7 @@
 			
 			<div class="nav-collapse collapse navbar-responsive-collapse">
 				<jsp:include page='_user.jsp'></jsp:include>
+				<jsp:include page='_category.jsp'></jsp:include>
 			</div>
 			<!-- /.nav-collapse -->
 		</div>

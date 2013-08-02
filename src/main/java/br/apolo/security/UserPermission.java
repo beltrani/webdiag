@@ -24,6 +24,10 @@ public enum UserPermission implements ConfigAttribute {
 	USER_PERMISSION_CREATE,
 	USER_PERMISSION_EDIT,
 	USER_PERMISSION_REMOVE,
+	
+	DOCTOR,
+	
+	
 	;
 	
 	public String getAttribute() {
