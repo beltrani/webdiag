@@ -25,6 +25,11 @@ public enum Navigation {
 	CATEGORY_EDIT("category/edit"),
 	CATEGORY_VIEW("category/view"),
 	
+	SYMPTOM_LIST("symptom/list"),
+	SYMPTOM_NEW("symptom/new"),
+	SYMPTOM_EDIT("symptom/edit"),
+	SYMPTOM_VIEW("symptom/view"),
+	
 	AUTH("auth"),
 	AUTH_LOGIN("auth/login"),
 	AUTH_LOGOUT("auth/logout"),
