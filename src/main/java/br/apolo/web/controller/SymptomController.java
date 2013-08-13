@@ -20,11 +20,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.apolo.business.service.CategoryService;
 import br.apolo.business.service.SymptomService;
 import br.apolo.common.exception.AccessDeniedException;
 import br.apolo.common.util.MessageBundle;
-import br.apolo.data.model.Category;
 import br.apolo.data.model.Symptom;
 import br.apolo.security.SecuredEnum;
 import br.apolo.security.UserPermission;
@@ -81,7 +79,7 @@ public class SymptomController extends BaseController<Symptom> {
 			try {
 				symptomService.save(entity);
 				
-//				mav = view(entity.getId(), request); TODO
+				mav = view(entity.getId(), request);
 				mav.addObject("msg", true);
 				mav.addObject("message", MessageBundle.getMessageBundle("common.msg.save.success"));
 			} catch (AccessDeniedException e) {
@@ -152,7 +150,7 @@ public class SymptomController extends BaseController<Symptom> {
 	@Override
 	@SecuredEnum(UserPermission.DOCTOR)
 	@RequestMapping(value = "remove/{id}", method = RequestMethod.GET)
-	public String remove(Long id) {
+	public @ResponseBody String remove(@PathVariable Long id) {
 		String result = "";
 		
 		JSONObject jsonSubject = new JSONObject();

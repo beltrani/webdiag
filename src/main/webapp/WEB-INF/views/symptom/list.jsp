@@ -58,7 +58,7 @@
 											</a>
 										</security:authorize>
 										<security:authorize  ifAnyGranted="ROLE_ADMIN, ROLE_DOCTOR">
-											<a href='#' class="btn btn-small" onclick="removeConfirmationDialogOpen('<s:url value="/category/remove"></s:url>/${category.id}', 'category_${category.id}');" data-toggle="tooltip" title="<s:message code="common.remove" />">
+											<a href='#' class="btn btn-small" onclick="removeConfirmationDialogOpen('<s:url value="/symptom/remove"></s:url>/${symptom.id}', 'symptom_${symptom.id}');" data-toggle="tooltip" title="<s:message code="common.remove" />">
 												<i class="icon-remove"></i>
 											</a>
 										</security:authorize>
