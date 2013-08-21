@@ -30,6 +30,16 @@ public enum Navigation {
 	SYMPTOM_EDIT("symptom/edit"),
 	SYMPTOM_VIEW("symptom/view"),
 	
+	SICKNESS_LIST("sickness/list"),
+	SICKNESS_NEW("sickness/new"),
+	SICKNESS_EDIT("sickness/edit"),
+	SICKNESS_VIEW("sickness/view"),
+	
+	SPECIALTY_LIST("specialty/list"),
+	SPECIALTY_NEW("specialty/new"),
+	SPECIALTY_EDIT("specialty/edit"),
+	SPECIALTY_VIEW("specialty/view"),
+	
 	AUTH("auth"),
 	AUTH_LOGIN("auth/login"),
 	AUTH_LOGOUT("auth/logout"),
