@@ -9,9 +9,8 @@ import br.apolo.data.model.Sickness;
 
 public interface SicknessRepository extends PagingAndSortingRepository<Sickness, Long>, SicknessRepositoryCustom {
 
-	Sickness findSicknessByCategory_name(String categoryName);
-	Sickness findSicknessBySymptom(String symptom);
-	Sickness findSicknessByName(String name);
+	Sickness findByCategory_Name(String categoryName);
+	Sickness findByName(String name);
 	
 	@Query("FROM Sickness e ORDER BY e.name")
 	List<Sickness> findAllSicknes();
