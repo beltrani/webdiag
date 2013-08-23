@@ -68,6 +68,10 @@ public class InputLength {
 	public static final int TINY = 16;
 
 	public static final int ESTIMATED_TIME_NBR = 8;
+	
+	public static final int CID = 256;
+	
+	public static final int CRM = 256;
 
 	/* These getters are necessary for the EL expressions inside the JSPages. They must be non-static in order to work */
 
@@ -205,6 +209,14 @@ public class InputLength {
 
 	public int getEstimatedTimeNbr() {
 		return ESTIMATED_TIME_NBR;
+	}
+
+	public static int getCid() {
+		return CID;
+	}
+
+	public static int getCrm() {
+		return CRM;
 	}
 
 }
