@@ -1,6 +1,7 @@
 package br.apolo.data.model;
 
 import javax.annotation.Generated;
+import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
@@ -10,6 +11,7 @@ public abstract class Category_ extends br.apolo.data.model.AuditableBaseEntity_
 
 	public static volatile SingularAttribute<Category, String> description;
 	public static volatile SingularAttribute<Category, String> name;
+	public static volatile ListAttribute<Category, Sickness> sickness;
 
 }
 
