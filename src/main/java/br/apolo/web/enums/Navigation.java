@@ -40,6 +40,11 @@ public enum Navigation {
 	SPECIALTY_EDIT("specialty/edit"),
 	SPECIALTY_VIEW("specialty/view"),
 	
+	DOCTOR_LIST("doctor/list"),
+	DOCTOR_NEW("doctor/new"),
+	DOCTOR_EDIT("doctor/edit"),
+	DOCTOR_VIEW("doctor/view"),
+	
 	AUTH("auth"),
 	AUTH_LOGIN("auth/login"),
 	AUTH_LOGOUT("auth/logout"),

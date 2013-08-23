@@ -1,9 +1,14 @@
 package br.apolo.data.model;
 
+import java.util.List;
+
 import javax.persistence.AttributeOverride;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -27,6 +32,10 @@ public class Category extends AuditableBaseEntity {
 	@Column(name = "description", length = InputLength.DESCR, nullable = true)
 	@Size(max = InputLength.DESCR)
 	private String description;
+	
+	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+	@OrderBy("id")
+	private List<Sickness> sickness;
 
 	public String getName() {
 		return name;
@@ -42,6 +51,14 @@ public class Category extends AuditableBaseEntity {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public List<Sickness> getSickness() {
+		return sickness;
+	}
+
+	public void setSickness(List<Sickness> sickness) {
+		this.sickness = sickness;
 	}
 	
 } 
