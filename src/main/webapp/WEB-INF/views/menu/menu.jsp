@@ -14,6 +14,8 @@
 				<span class="icon-bar"></span> 
 				<span class="icon-bar"></span> 
 				<span class="icon-bar"></span>
+				 
+				
 			</a> 
 			
 			<a class="brand" href='<s:url value="/"></s:url>'>
@@ -25,6 +27,8 @@
 				<jsp:include page='_user.jsp'></jsp:include>
 				<jsp:include page='_category.jsp'></jsp:include>
 				<jsp:include page='_symptom.jsp'></jsp:include>
+				<jsp:include page='_sickness.jsp'></jsp:include>
+				<jsp:include page='_doctor.jsp'></jsp:include>
 			</div>
 			<!-- /.nav-collapse -->
 		</div>
