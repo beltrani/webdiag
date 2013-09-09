@@ -37,6 +37,7 @@ public class DoctorController extends BaseController<Doctor> {
 
 	@Override
 	@SecuredEnum(UserPermission.DOCTOR)
+	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public ModelAndView list(HttpServletRequest request) {
 		breadCrumbService.addNode(MessageBundle.getMessageBundle("breadcrumb.doctor.list"), 1, request);
 		
@@ -51,6 +52,7 @@ public class DoctorController extends BaseController<Doctor> {
 
 	@Override
 	@SecuredEnum(UserPermission.DOCTOR)
+	@RequestMapping(value = "save", method = RequestMethod.POST)
 	public ModelAndView save(@Valid @ModelAttribute("entity") Doctor entity, BindingResult result,
 			HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
