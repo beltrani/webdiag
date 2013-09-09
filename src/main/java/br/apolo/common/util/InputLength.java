@@ -72,7 +72,17 @@ public class InputLength {
 	public static final int CID = 256;
 	
 	public static final int CRM = 256;
-
+	
+	public static final int ADDRESS = 100;
+	
+	public static final int CITY = 80;
+	
+	public static final int NUMBER = 5;
+	
+	public static final int PHONE = 20;
+	
+	public static final int STATE = 45;
+	
 	/* These getters are necessary for the EL expressions inside the JSPages. They must be non-static in order to work */
 
 	public int getErrorMessage() {
@@ -217,6 +227,26 @@ public class InputLength {
 
 	public static int getCrm() {
 		return CRM;
+	}
+
+	public static int getAddress() {
+		return ADDRESS;
+	}
+
+	public static int getCity() {
+		return CITY;
+	}
+
+	public static int getNumber() {
+		return NUMBER;
+	}
+
+	public static int getPhone() {
+		return PHONE;
+	}
+
+	public static int getState() {
+		return STATE;
 	}
 
 }
