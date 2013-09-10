@@ -80,7 +80,7 @@ public class DoctorController extends BaseController<Doctor> {
 			try {
 				doctorService.save(entity);
 				
-//				mav = view(entity.getId(), request); 
+     			mav = view(entity.getId(), request); 
 				mav.addObject("msg", true);
 				mav.addObject("message", MessageBundle.getMessageBundle("common.msg.save.success"));
 			} catch (AccessDeniedException e) {

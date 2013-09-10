@@ -51,18 +51,16 @@ public class Clinic extends AuditableBaseEntity {
 	private Integer state;
 
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "clinic_doctor", 
 			joinColumns = { @JoinColumn(name = "clinic_id", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "doctor_id", nullable = false, updatable = false) })
-	
 	private List<Doctor>doctors;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "clinic_sickness", 
 			joinColumns = { @JoinColumn(name = "clinic_id", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "sickness_id", nullable = false, updatable = false) })
-	
 	private List<Sickness>sicknessAds;
 
 	public String getAddress() {
