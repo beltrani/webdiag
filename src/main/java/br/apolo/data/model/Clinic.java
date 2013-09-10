@@ -50,7 +50,6 @@ public class Clinic extends AuditableBaseEntity {
 	@Size(min = 1, max = InputLength.STATE)
 	private Integer state;
 
-
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "clinic_doctor", 
 			joinColumns = { @JoinColumn(name = "clinic_id", nullable = false, updatable = false) }, 

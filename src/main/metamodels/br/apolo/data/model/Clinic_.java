@@ -9,7 +9,6 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(Clinic.class)
 public abstract class Clinic_ extends br.apolo.data.model.AuditableBaseEntity_ {
 
-
 	public static volatile ListAttribute<Clinic, Sickness> sicknessAds;
 	public static volatile SingularAttribute<Clinic, Integer> phone;
 	public static volatile SingularAttribute<Clinic, String> address;
