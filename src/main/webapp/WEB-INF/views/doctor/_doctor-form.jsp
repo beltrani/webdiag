@@ -55,14 +55,14 @@
 
 <div class="row-fluid" <c:if test="${!readOnly}">style="display:none;"</c:if>>
 	<div class="span6">
-		<label for="category.createdBy.name">
+		<label for="doctor.createdBy.name">
 			<s:message code="common.author" />
 		</label>
-		<form:input path="category.createdBy.id" cssClass="input-block-level" cssStyle="display:none;" />
-		<form:input path="category.createdBy.name" cssClass="input-block-level" readonly="true" />
+		<form:input path="doctor.createdBy.id" cssClass="input-block-level" cssStyle="display:none;" />
+		<form:input path="doctor.createdBy.name" cssClass="input-block-level" readonly="true" />
 	</div>
 	<div class="span6">
-		<label for="category.creationDate">
+		<label for="doctor.creationDate">
 			<s:message code="common.creationDate" />
 		</label>
 		<input 
