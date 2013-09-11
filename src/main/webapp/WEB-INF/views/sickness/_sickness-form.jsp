@@ -42,15 +42,58 @@
 	</div>
 </div>
 
+
 <div class="row-fluid">
-	<div class="span6">
-		<label for="category">
-			<s:message code="sickness.category" />
-		</label>
-		<input class="input-block-level" type="text" id="category" name="category" value="${sickness.category}" <c:if test="${readOnly}">readonly="true"</c:if> />
-	</div>
+	<c:choose>
+		<c:when test="${not readOnly}">
+			<div class="span6">
+				<label for="name">
+					<s:message code="sickness.category" />
+				</label>
+				<select name="categories" id="listTo" size="5" multiple="multiple" class="input-block-level applyChosen" <c:if test="${readOnly}">disabled="disabled"</c:if> data-placeholder='<s:message code="common.select" />' >
+					<c:forEach items="${categoryList}" var="category">
+						<option value="${category.id}" 
+							<c:forEach items="${categories}" var="category">
+								<c:if test="${category == sickness.category}">
+									selected="selected"
+								</c:if>
+							</c:forEach>						
+						>${category.name}</option>
+					</c:forEach>
+				</select>
+			</div>
+		</c:when>
+		<c:otherwise>
+			<div class="span5">
+				<table class="table table-striped table-hover table-bordered">
+					<caption>
+						<strong>
+							<s:message code="categories" />
+						</strong>
+					</caption>
+					<tbody>
+						<c:forEach items="${categories}" var="category">
+							<tr>
+								<td>
+									
+										<a href='<s:url value="/category/view"></s:url>/${category.id}'>
+											${category.name}
+										</a>
+									
+									
+									
+										${category.name}
+							
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</c:otherwise>
+	</c:choose>
 </div>
-<br />
+
 
 <div class="row-fluid" <c:if test="${!readOnly}">style="display:none;"</c:if>>
 	<div class="span6">
