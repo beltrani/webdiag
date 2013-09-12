@@ -9,24 +9,23 @@
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 			<i class="icon-cog "></i>
 			<span class="hidden-phone">
-				<s:message code="sickness" />
+				<s:message code="clinic" />
 			</span>
 			<span class="caret"></span>
 		</a>
                        
 		<ul class="dropdown-menu">
 			<li>
-				<a href='<s:url value="/sickness/list"></s:url>'>
+				<a href='<s:url value="/clinic/list"></s:url>'>
 					<i class="icon-th-list"></i>
-					<s:message code="sickness.list" />
+					<s:message code="clinic.list" />
 				</a>
 			</li>
-			
 			<security:authorize  ifAnyGranted="ROLE_ADMIN, ROLE_DOCTOR">
 				<li>
-					<a href='<s:url value="/sickness/new"></s:url>'>
+					<a href='<s:url value="/clinic/new"></s:url>'>
 						<i class="icon-plus"></i>
-						<s:message code="sickness.new" />
+						<s:message code="clinic.new" />
 					</a>
 				</li>
 			</security:authorize>                               

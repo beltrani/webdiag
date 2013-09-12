@@ -15,6 +15,7 @@ public abstract class Clinic_ extends br.apolo.data.model.AuditableBaseEntity_ {
 	public static volatile SingularAttribute<Clinic, Integer> state;
 	public static volatile SingularAttribute<Clinic, Integer> number;
 	public static volatile ListAttribute<Clinic, Doctor> doctors;
-	public static volatile SingularAttribute<Clinic, String> citty;
+	public static volatile SingularAttribute<Clinic, String> city;
+	public static volatile SingularAttribute<Clinic, String> name;
 
 }

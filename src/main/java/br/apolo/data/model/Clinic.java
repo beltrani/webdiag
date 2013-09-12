@@ -25,6 +25,11 @@ public class Clinic extends AuditableBaseEntity {
 
 	private static final long serialVersionUID = 5588722501578237833L;
 
+	@Column(name = "name", length = InputLength.NAME, nullable = false)
+	@NotNull
+	@Size(min = 1, max = InputLength.NAME)
+	private String name;
+	
 	@Column(name = "address", length = InputLength.ADDRESS, nullable = false)
 	@NotNull
 	@Size(min = 1, max = InputLength.ADDRESS)
@@ -33,7 +38,7 @@ public class Clinic extends AuditableBaseEntity {
 	@Column(name = "city", length = InputLength.CITY, nullable = false)
 	@NotNull
 	@Size(min = 1, max = InputLength.CITY)
-	private String citty;
+	private String city;
 	
 	@Column(name = "number", length = InputLength.NUMBER, nullable = false)
 	@NotNull
@@ -68,14 +73,6 @@ public class Clinic extends AuditableBaseEntity {
 
 	public void setAddress(String address) {
 		this.address = address;
-	}
-
-	public String getCitty() {
-		return citty;
-	}
-
-	public void setCitty(String citty) {
-		this.citty = citty;
 	}
 
 	public Integer getNumber() {
@@ -116,6 +113,22 @@ public class Clinic extends AuditableBaseEntity {
 
 	public void setSicknessAds(List<Sickness> sicknessAds) {
 		this.sicknessAds = sicknessAds;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 	
 	

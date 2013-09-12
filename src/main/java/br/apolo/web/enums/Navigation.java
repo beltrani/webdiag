@@ -45,6 +45,11 @@ public enum Navigation {
 	DOCTOR_EDIT("doctor/edit"),
 	DOCTOR_VIEW("doctor/view"),
 	
+	CLINIC_LIST("clinic/list"),
+	CLINIC_NEW("clinic/new"),
+	CLINIC_EDIT("clinic/edit"),
+	CLINIC_VIEW("clinic/view"),
+	
 	AUTH("auth"),
 	AUTH_LOGIN("auth/login"),
 	AUTH_LOGOUT("auth/logout"),
