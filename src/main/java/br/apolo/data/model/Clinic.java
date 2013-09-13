@@ -43,12 +43,12 @@ public class Clinic extends AuditableBaseEntity {
 	@Column(name = "number", length = InputLength.NUMBER, nullable = false)
 	@NotNull
 	@Size(min = 1, max = InputLength.NUMBER)
-	private Integer number;
+	private String number;
 
 	@Column(name = "phone", length = InputLength.PHONE, nullable = false)
 	@NotNull
 	@Size(min = 1, max = InputLength.PHONE)
-	private Integer phone;
+	private String phone;
 	
 	@Column(name = "state", length = InputLength.STATE, nullable = false)
 	@NotNull
@@ -75,19 +75,19 @@ public class Clinic extends AuditableBaseEntity {
 		this.address = address;
 	}
 
-	public Integer getNumber() {
+	public String getNumber() {
 		return number;
 	}
 
-	public void setNumber(Integer number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 
-	public Integer getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(Integer phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
