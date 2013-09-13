@@ -98,7 +98,7 @@ public class ClinicController extends BaseController<Clinic> {
 	public ModelAndView view(@PathVariable Long id, HttpServletRequest request) {
 		breadCrumbService.addNode(MessageBundle.getMessageBundle("breadcrumb.clinic"), 2, request);
 		
-		ModelAndView mav = new ModelAndView(Navigation.DOCTOR_VIEW.getPath());
+		ModelAndView mav = new ModelAndView(Navigation.CLINIC_VIEW.getPath());
 		
 		Clinic clinic = clinicService.find(id);
 		

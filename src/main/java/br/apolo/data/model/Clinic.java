@@ -53,7 +53,7 @@ public class Clinic extends AuditableBaseEntity {
 	@Column(name = "state", length = InputLength.STATE, nullable = false)
 	@NotNull
 	@Size(min = 1, max = InputLength.STATE)
-	private Integer state;
+	private String state;
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "clinic_doctor", 
@@ -91,11 +91,11 @@ public class Clinic extends AuditableBaseEntity {
 		this.phone = phone;
 	}
 
-	public Integer getState() {
+	public String getState() {
 		return state;
 	}
 
-	public void setState(Integer state) {
+	public void setState(String state) {
 		this.state = state;
 	}
 
