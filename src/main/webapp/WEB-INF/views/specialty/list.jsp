@@ -29,7 +29,7 @@
 				</thead>
 				
 				<tbody>
-					<c:forEach items="${specialtyList}" var="symptom">
+					<c:forEach items="${specialtyList}" var="specialty">
 						<tr id="specialty_${specialty.id}">
 							<td>
 								<security:authorize  ifAnyGranted="ROLE_ADMIN, ROLE_DOCTOR">

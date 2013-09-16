@@ -9,7 +9,7 @@
 		<s:message code="specialty.new.title" />
 	</legend>
 	
-	<form id="specialtyForm" action="<s:url value="/symptom/save"></s:url>" method="post" class="form-inline">
+	<form id="specialtyForm" action="<s:url value="/specialty/save"></s:url>" method="post" class="form-inline">
 		<jsp:include page='_specialty-form.jsp'></jsp:include>
 		
 		<div class="form-actions">

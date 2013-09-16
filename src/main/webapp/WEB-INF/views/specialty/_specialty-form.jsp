@@ -10,7 +10,7 @@
 
 <jsp:useBean id="inputlength" class="br.apolo.common.util.InputLength"/>
 
-<input type="hidden" id="id" name="id" value="${symptom.id}" />
+<input type="hidden" id="id" name="id" value="${specialty.id}" />
 
 <div class="row-fluid">
 	<div class="span12">

@@ -48,7 +48,7 @@ public class Doctor extends AuditableBaseEntity {
 			inverseJoinColumns = { @JoinColumn(name = "specialty_id", nullable = false, updatable = false) })
 	private List<Specialty>specialties;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id", nullable = false)
 	private Category user;
 	
