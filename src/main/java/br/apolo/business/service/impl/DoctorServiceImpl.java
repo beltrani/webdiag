@@ -8,12 +8,16 @@ import org.springframework.stereotype.Service;
 
 import br.apolo.business.model.SearchResult;
 import br.apolo.business.service.DoctorService;
+import br.apolo.business.service.UserService;
 import br.apolo.data.model.Doctor;
 import br.apolo.data.repository.DoctorRepository;
 
 @Service("doctorService")
 public class DoctorServiceImpl extends BaseServiceImpl<Doctor> implements DoctorService {
 
+	@Autowired
+	private UserService userService;
+	
 	@Autowired
 	private DoctorRepository doctorRepository;
 
@@ -31,6 +35,13 @@ public class DoctorServiceImpl extends BaseServiceImpl<Doctor> implements Doctor
 	public Doctor save(Doctor entity) {
 		entity.setLastUpdatedBy(getAuthenticatedUser());
 		entity.setLastUpdateDate(new Date());
+		
+		if (entity.getUser() != null && entity.getUser().getId() == null) {
+			entity.getUser().setName(entity.getName());
+			entity.getUser().setPassword("mudeASenha!!!");
+			
+			entity.setUser(userService.save(entity.getUser(), true));
+		}
 		
 		return doctorRepository.save(entity);	
 	}

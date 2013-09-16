@@ -42,7 +42,19 @@
 								</security:authorize>
 							</td>
 							<td>
-							${doctor.specialties}
+								<table class="table table-condensed table-bordered">
+									<tbody>
+										<c:forEach items="${doctor.specialties}" var="specialty">
+											<tr>
+												<td>
+													<a href='<s:url value="/specialty/view"></s:url>/${specialty.id}' class="btn btn-link">
+														${specialty.name}
+													</a>
+												</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
 							</td>
 							<security:authorize  ifAnyGranted="ROLE_ADMIN, ROLE_DOCTOR">
 								<td>

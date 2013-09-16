@@ -28,6 +28,7 @@
 				<jsp:include page='_symptom.jsp'></jsp:include>
 				<jsp:include page='_sickness.jsp'></jsp:include>
 				<jsp:include page='_doctor.jsp'></jsp:include>
+				<jsp:include page='_specialty.jsp'></jsp:include>
 				<jsp:include page='_clinic.jsp'></jsp:include>
 			</div>
 			<!-- /.nav-collapse -->
