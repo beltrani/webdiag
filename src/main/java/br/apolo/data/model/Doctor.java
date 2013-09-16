@@ -39,20 +39,19 @@ public class Doctor extends AuditableBaseEntity {
 	@Column(name = "state", nullable = false)
 	@NotNull
 	@Size(min = 1, max = 256)
-	private Integer state;
+	private String state;
 
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "doctor_specialty", 
 			joinColumns = { @JoinColumn(name = "doctor_id", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "specialty_id", nullable = false, updatable = false) })
-	
 	private List<Specialty>specialties;
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id", nullable = false)
-	private User user;
-
+	private Category user;
+	
 	public String getName() {
 		return name;
 	}
@@ -69,11 +68,11 @@ public class Doctor extends AuditableBaseEntity {
 		this.crm = crm;
 	}
 
-	public Integer getState() {
+	public String getState() {
 		return state;
 	}
 
-	public void setState(Integer state) {
+	public void setState(String state) {
 		this.state = state;
 	}
 
@@ -85,13 +84,12 @@ public class Doctor extends AuditableBaseEntity {
 		this.specialties = specialties;
 	}
 
-	public User getUser() {
+	public Category getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Category user) {
 		this.user = user;
 	}
-
 
 }

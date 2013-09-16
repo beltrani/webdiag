@@ -30,8 +30,6 @@
 	</div>
 </div>
 
-<br />
-
 <div class="row-fluid">
 	<div class="span6">
 		<label for="number">
@@ -40,8 +38,6 @@
 		<input class="input-block-level" type="text" id="number" name="number" value="${clinic.number}" <c:if test="${readOnly}">readonly="true"</c:if> />
 	</div>
 </div>
-
-<br />
 
 <div class="row-fluid">
 	<div class="span6">
