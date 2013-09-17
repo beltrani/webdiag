@@ -16,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -55,9 +56,9 @@ public class User extends AuditableBaseEntity {
 	@NotNull
 	private Set<UserGroup> groups;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
 	@OrderBy("id")
-	private List<Doctor> doctor;
+	private Doctor doctor;
 	
 	@Transient
 	private Set<UserPermission> permissions;
@@ -106,11 +107,12 @@ public class User extends AuditableBaseEntity {
 		this.email = email;
 	}
 
-	public List<Doctor> getDoctor() {
+	public Doctor getDoctor() {
 		return doctor;
 	}
 
-	public void setDoctor(List<Doctor> doctor) {
+	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
 	}
+
 }

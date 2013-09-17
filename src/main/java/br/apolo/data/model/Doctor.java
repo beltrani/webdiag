@@ -10,7 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -48,9 +48,9 @@ public class Doctor extends AuditableBaseEntity {
 			inverseJoinColumns = { @JoinColumn(name = "specialty_id", nullable = false, updatable = false) })
 	private List<Specialty>specialties;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id", nullable = false)
-	private Category user;
+	private User user;
 	
 	public String getName() {
 		return name;
@@ -84,12 +84,13 @@ public class Doctor extends AuditableBaseEntity {
 		this.specialties = specialties;
 	}
 
-	public Category getUser() {
+	public User getUser() {
 		return user;
 	}
 
-	public void setUser(Category user) {
+	public void setUser(User user) {
 		this.user = user;
+		
 	}
 
 }
