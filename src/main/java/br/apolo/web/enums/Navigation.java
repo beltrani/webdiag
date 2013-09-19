@@ -50,6 +50,11 @@ public enum Navigation {
 	CLINIC_EDIT("clinic/edit"),
 	CLINIC_VIEW("clinic/view"),
 	
+	PERSONALDATA_LIST("personaldata/list"),
+	PERSONALDATA_NEW("personaldata/new"),
+	PERSONALDATA_EDIT("personaldata/edit"),
+	PERSONALDATA_VIEW("personaldata/view"),
+	
 	AUTH("auth"),
 	AUTH_LOGIN("auth/login"),
 	AUTH_LOGOUT("auth/logout"),

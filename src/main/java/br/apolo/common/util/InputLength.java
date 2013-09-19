@@ -83,6 +83,10 @@ public class InputLength {
 	
 	public static final int STATE = 45;
 	
+	public static final int CPF = 16;
+	
+	public static final int RG = 16;
+	
 	/* These getters are necessary for the EL expressions inside the JSPages. They must be non-static in order to work */
 
 	public int getErrorMessage() {

@@ -1,7 +1,6 @@
 package br.apolo.data.model;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.AttributeOverride;
@@ -15,7 +14,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
@@ -59,6 +57,10 @@ public class User extends AuditableBaseEntity {
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
 	@OrderBy("id")
 	private Doctor doctor;
+	
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+	@OrderBy("id")
+	private PersonalData personalData;
 	
 	@Transient
 	private Set<UserPermission> permissions;
@@ -113,6 +115,14 @@ public class User extends AuditableBaseEntity {
 
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
+	}
+
+	public PersonalData getPersonalData() {
+		return personalData;
+	}
+
+	public void setPersonal_data(PersonalData personalData) {
+		this.personalData = personalData;
 	}
 
 }
