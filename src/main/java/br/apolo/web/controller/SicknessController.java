@@ -9,10 +9,13 @@ import javax.validation.Valid;
 import net.sf.json.JSONObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomCollectionEditor;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +23,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.apolo.business.service.CategoryService;
 import br.apolo.business.service.SicknessService;
+import br.apolo.business.service.SymptomService;
 import br.apolo.common.exception.AccessDeniedException;
 import br.apolo.common.util.MessageBundle;
 import br.apolo.data.model.Sickness;
@@ -34,6 +39,12 @@ public class SicknessController extends BaseController<Sickness> {
 
 	@Autowired
 	private SicknessService sicknessService;
+	
+	@Autowired
+	private CategoryService categoryService;
+	
+	@Autowired
+	private SymptomService symptomService;
 	
 	@Override
 	@RequestMapping(value = "list", method = RequestMethod.GET)
@@ -62,6 +73,8 @@ public class SicknessController extends BaseController<Sickness> {
 			mav.setViewName(getRedirectionPath(request, Navigation.SICKNESS_NEW, Navigation.SICKNESS_EDIT));
 			
 			mav.addObject("sickness", entity);
+			mav.addObject("categoryList", categoryService.list());
+			mav.addObject("symptomList", symptomService.list());
 			mav.addObject("readOnly", false);
 			mav.addObject("error", true);
 			
@@ -104,6 +117,8 @@ public class SicknessController extends BaseController<Sickness> {
 		Sickness sickness = sicknessService.find(id);
 		
 		mav.addObject("sickness", sickness);
+		mav.addObject("categoryList", categoryService.list());
+		mav.addObject("symptomList", symptomService.list());
 		mav.addObject("readOnly", true);
 		
 		return mav;
@@ -126,6 +141,8 @@ public class SicknessController extends BaseController<Sickness> {
 		sickness.setLastUpdateDate(new Date());
 		
 		mav.addObject("sickness", sickness);
+		mav.addObject("categoryList", categoryService.list());
+		mav.addObject("symptomList", symptomService.list());
 		mav.addObject("readOnly", false);
 		
 		return mav;
@@ -145,6 +162,8 @@ public class SicknessController extends BaseController<Sickness> {
 		sickness.setLastUpdateDate(new Date());
 		
 		mav.addObject("sickness", sickness);
+		mav.addObject("categoryList", categoryService.list());
+		mav.addObject("symptomList", symptomService.list());
 		mav.addObject("readOnly", false);
 		
 		return mav;
@@ -178,4 +197,28 @@ public class SicknessController extends BaseController<Sickness> {
 		
 		return jsonSubject.toString();
 	}
-	}
+	
+    @InitBinder
+    protected void initBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(List.class, "symptoms", new CustomCollectionEditor(List.class) {
+            @Override
+            protected Object convertElement(Object element) {
+                Long id = null;
+
+                if(element instanceof String && !((String)element).equals("")){
+                    //From the JSP 'element' will be a String
+                    try{
+                        id = Long.parseLong((String) element);
+                    } catch (NumberFormatException e) {
+                        log.error("Element was " + ((String) element), e);
+                    }
+                } else if(element instanceof Long) {
+                    //From the database 'element' will be a Long
+                    id = (Long) element;
+                }
+
+                return id != null ? symptomService.find(id) : null;
+            }
+          });
+    }
+}

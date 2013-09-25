@@ -44,11 +44,10 @@ public class Sickness extends AuditableBaseEntity {
 	@JoinTable(name = "sickness_symptom", 
 			joinColumns = { @JoinColumn(name = "sickness_id", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "symptom_id", nullable = false, updatable = false) })
-	
 	private List<Symptom>symptoms;
 	
 	@ManyToOne
-	@JoinColumn(name = "category_id", nullable = false)
+	@JoinColumn(name = "category_id", nullable = true)
 	private Category category;
 
 

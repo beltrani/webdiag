@@ -25,7 +25,7 @@
 		</p>
 		<p>
 			Atenção:<br/>
-			“ Você NÃO deve substituir as informações no site Webdiag pelo aconselhamento profissional! Lembre-se que este serviço jamais poderá ser interpretado como uma consulta médica.”
+			“ Você NÃO deve substituir o aconselhamento profissional pelas informações contidas no site Webdiag ! Lembre-se que este serviço jamais poderá ser interpretado como uma consulta médica, procure sempre um profissional qualificado.”
 		</p>
 	</div>
 </div>

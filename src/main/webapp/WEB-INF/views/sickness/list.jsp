@@ -23,6 +23,9 @@
 						<th>
 							<s:message code="sickness.description" />
 						</th>
+						<th>
+							<s:message code="sickness.description" /> TODO Sintomas
+						</th>
 					
 						<security:authorize  ifAnyGranted="ROLE_ADMIN, ROLE_DOCTOR">
 							<th>
@@ -42,18 +45,37 @@
 									</a>
 								</security:authorize>
 								<security:authorize  ifNotGranted="ROLE_ADMIN, ROLE_DOCTOR">
-									${sickness.cid}
+									${sickness.name}
 								</security:authorize>
 							</td>
 							<td>
-							${sickness.symptom}
+								${sickness.cid}
+							</td>
+							<td>
+								${sickness.description}
+							</td>
+							<td>
+								<table class="table table-condensed table-bordered">
+									<tbody>
+										<c:forEach items="${sickness.symptoms}" var="symptom">
+											<tr>
+												<td>
+													<security:authorize  ifAnyGranted="ROLE_ADMIN, ROLE_DOCTOR">
+														<a href='<s:url value="/symptom/view"></s:url>/${symptom.id}' class="btn btn-link">
+															${symptom.name}
+														</a>
+													</security:authorize>
+													<security:authorize  ifNotGranted="ROLE_ADMIN, ROLE_DOCTOR">
+														${symptom.name}
+													</security:authorize>
+												</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
 							</td>
 							<security:authorize  ifAnyGranted="ROLE_ADMIN, ROLE_DOCTOR">
 								<td>
-								<td>
-							${sickness.description}
-							</td>
-							
 									<div class="btn-group">
 										<security:authorize  ifAnyGranted="ROLE_ADMIN, ROLE_DOCTOR">
 											<a href='<s:url value="/sickness/view"></s:url>/${sickness.id}' class="btn btn-small" data-toggle="tooltip" title="<s:message code="common.show" />">

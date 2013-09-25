@@ -21,9 +21,6 @@
 	</div>
 </div>
 
-<br />
-
-
 <div class="row-fluid">
 	<div class="span12">
 		<label for="description">
@@ -40,25 +37,38 @@
 		</label>
 		<input class="input-block-level" type="text" id="cid" name="cid" value="${sickness.cid}" <c:if test="${readOnly}">readonly="true"</c:if> />
 	</div>
+	
+	<div class="span6">
+		<label for="category" class="control-label">
+			<s:message code="sickness.cid" /> TODO Categoria
+		</label>
+		<select id="category.id" name="category.id" class="input-block-level applyChosen" data-placeholder='<s:message code="common.select" />' <c:if test="${readOnly}">disabled="disabled"</c:if>>
+			<c:forEach items="${categoryList}" var="category">
+				<option value="${category.id}" <c:if test="${category == sickness.category}">selected="selected"</c:if>>
+					${category.name}
+				</option>
+			</c:forEach>
+		</select>
+	</div>
 </div>
 
 
 <div class="row-fluid">
 	<c:choose>
 		<c:when test="${not readOnly}">
-			<div class="span6">
+			<div class="span12">
 				<label for="name">
-					<s:message code="sickness.category" />
+					<s:message code="user.groups" /> TODO sintomas
 				</label>
-				<select name="categories" id="listTo" size="5" multiple="multiple" class="input-block-level applyChosen" <c:if test="${readOnly}">disabled="disabled"</c:if> data-placeholder='<s:message code="common.select" />' >
-					<c:forEach items="${categoryList}" var="category">
-						<option value="${category.id}" 
-							<c:forEach items="${categories}" var="category">
-								<c:if test="${category == sickness.category}">
+				<select name="symptoms" id="symptoms" size="5" multiple="multiple" class="input-block-level applyChosen" <c:if test="${readOnly}">disabled="disabled"</c:if> data-placeholder='<s:message code="common.select" />' >
+					<c:forEach items="${symptomList}" var="symptom">
+						<option value="${symptom.id}" 
+							<c:forEach items="${sickness.symptoms}" var="sicknessSymptom">
+								<c:if test="${symptom == sicknessSymptom}">
 									selected="selected"
 								</c:if>
 							</c:forEach>						
-						>${category.name}</option>
+						>${symptom.name}</option>
 					</c:forEach>
 				</select>
 			</div>
@@ -68,22 +78,22 @@
 				<table class="table table-striped table-hover table-bordered">
 					<caption>
 						<strong>
-							<s:message code="categories" />
+							<s:message code="user.groups" /> TODO sintomas
 						</strong>
 					</caption>
 					<tbody>
-						<c:forEach items="${categories}" var="category">
+						<c:forEach items="${sickness.symptoms}" var="symptom">
 							<tr>
 								<td>
-									
-										<a href='<s:url value="/category/view"></s:url>/${category.id}'>
-											${category.name}
+									<security:authorize  ifAnyGranted="ROLE_ADMIN, ROLE_DOCTOR">
+										<a href='<s:url value="/symptom/view"></s:url>/${symptom.id}'>
+											${symptom.name}
 										</a>
+									</security:authorize>
 									
-									
-									
-										${category.name}
-							
+									<security:authorize  ifNotGranted="ROLE_ADMIN, ROLE_DOCTOR">
+										${symptom.name}
+									</security:authorize>
 								</td>
 							</tr>
 						</c:forEach>
