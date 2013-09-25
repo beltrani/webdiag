@@ -165,6 +165,51 @@
 	</c:choose>
 </div>
 
+<div class="row-fluid">
+	<div class="span6">
+		<label for="name">
+			<s:message code="user.name" />
+		</label>
+		<form:input path="user.personalData.cpf" cssClass="input-block-level" readonly="${readOnly}" />
+	</div>
+	<div class="span6">
+		<label for="name">
+			<s:message code="user.name" />
+		</label>
+		<form:input path="user.personalData.rg" cssClass="input-block-level" readonly="${readOnly}" />
+	</div>
+</div>
+
+<div class="row-fluid">
+	<div class="span12">
+		<label for="name">
+			<s:message code="user.name" />
+		</label>
+		<form:input path="user.personalData.address" cssClass="input-block-level" readonly="${readOnly}" />
+	</div>
+</div>
+
+<div class="row-fluid">
+	<div class="span4">
+		<label for="name">
+			<s:message code="user.name" />
+		</label>
+		<form:input path="user.personalData.number" cssClass="input-block-level" readonly="${readOnly}" />
+	</div>
+	<div class="span4">
+		<label for="name">
+			<s:message code="user.name" />
+		</label>
+		<form:input path="user.personalData.city" cssClass="input-block-level" readonly="${readOnly}" />
+	</div>
+	<div class="span4">
+		<label for="name">
+			<s:message code="user.name" />
+		</label>
+		<form:input path="user.personalData.state" cssClass="input-block-level" readonly="${readOnly}" />
+	</div>
+</div>
+
 <div class="row-fluid" <c:if test="${!readOnly}">style="display:none;"</c:if>>
 	<div class="span6">
 		<label for="user.createdBy.name">
@@ -184,7 +229,7 @@
 				class="input-block-level" 
 				value="<fmt:formatDate value="${user.creationDate}" 
 				pattern="${datePattern}" />" 
-				readonly="readonly"
+				readonly="true"
 			/>
 	</div>
 </div>

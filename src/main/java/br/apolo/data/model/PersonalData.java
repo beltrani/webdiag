@@ -22,32 +22,32 @@ public class PersonalData extends AuditableBaseEntity {
 
 	private static final long serialVersionUID = 5588722501578237833L;
 	
-	@Column(name = "cpf", length = InputLength.CPF, nullable = false)
+	@Column(name = "cpf", length = InputLength.CPF, nullable = true)
 	@NotNull
 	@Size(min = 1, max = InputLength.CPF)
 	private String cpf;
 	
-	@Column(name = "rg", length = InputLength.RG, nullable = false)
+	@Column(name = "rg", length = InputLength.RG, nullable = true)
 	@NotNull
 	@Size(min = 1, max = InputLength.RG)
 	private String rg;
 
-	@Column(name = "address", length = InputLength.ADDRESS, nullable = false)
+	@Column(name = "address", length = InputLength.ADDRESS, nullable = true)
 	@NotNull
 	@Size(min = 1, max = InputLength.ADDRESS)
 	private String address;
 	
-	@Column(name = "number", length = InputLength.NUMBER, nullable = false)
+	@Column(name = "number", length = InputLength.NUMBER, nullable = true)
 	@NotNull
 	@Size(min = 1, max = InputLength.NUMBER)
 	private String number;
 	
-	@Column(name = "city", length = InputLength.CITY, nullable = false)
+	@Column(name = "city", length = InputLength.CITY, nullable = true)
 	@NotNull
 	@Size(min = 1, max = InputLength.CITY)
 	private String city;
 
-	@Column(name = "state", length = InputLength.STATE, nullable = false)
+	@Column(name = "state", length = InputLength.STATE, nullable = true)
 	@NotNull
 	@Size(min = 1, max = InputLength.STATE)
 	private String state;

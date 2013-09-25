@@ -75,6 +75,10 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 			user.setPassword(dbUser.getPassword());
 		}
 		
+		if (user.getPersonalData() != null) {
+			user.getPersonalData().setUser(user);
+		}
+		
 		return userRepository.save(user);
 	}
 	

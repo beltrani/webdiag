@@ -121,7 +121,7 @@ public class User extends AuditableBaseEntity {
 		return personalData;
 	}
 
-	public void setPersonal_data(PersonalData personalData) {
+	public void setPersonalData(PersonalData personalData) {
 		this.personalData = personalData;
 	}
 
