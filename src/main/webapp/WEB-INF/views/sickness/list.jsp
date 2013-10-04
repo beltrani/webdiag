@@ -4,6 +4,8 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
+<jsp:include page='_search-form.jsp'></jsp:include>
+
 <fieldset>
 	<legend>
 		<s:message code="sickness.list.title" />
@@ -24,7 +26,7 @@
 							<s:message code="sickness.description" />
 						</th>
 						<th>
-							<s:message code="sickness.description" /> TODO Sintomas
+							TODO Sintomas
 						</th>
 					
 						<security:authorize  ifAnyGranted="ROLE_ADMIN, ROLE_DOCTOR">

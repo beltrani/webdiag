@@ -18,7 +18,7 @@ import br.apolo.data.repository.BaseRepository;
 public abstract class BaseRepotitoryImpl<E extends BaseEntity> implements BaseRepository<E> {
 	
 	@PersistenceContext
-	private EntityManager em;
+	protected EntityManager em;
 	
 	@Override
 	public List<E> search(String param, List<SingularAttribute<E, String>> fields) {

@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.apolo.business.model.SearchResult;
 import br.apolo.business.service.CategoryService;
 import br.apolo.business.service.SicknessService;
 import br.apolo.business.service.SymptomService;
@@ -32,6 +33,7 @@ import br.apolo.data.model.Sickness;
 import br.apolo.security.SecuredEnum;
 import br.apolo.security.UserPermission;
 import br.apolo.web.enums.Navigation;
+import br.apolo.web.model.SicknessFormModel;
 
 @Controller
 @RequestMapping(value = "/sickness")
@@ -56,6 +58,7 @@ public class SicknessController extends BaseController<Sickness> {
 		List<Sickness> sicknessList = sicknessService.list();
 		
 		mav.addObject("sicknessList", sicknessList);
+		mav.addObject("symptomList", symptomService.list());
 		
 		return mav;
 	}
@@ -196,6 +199,63 @@ public class SicknessController extends BaseController<Sickness> {
 		jsonSubject.accumulate("result", jsonItem);
 		
 		return jsonSubject.toString();
+	}
+	
+	@RequestMapping(value = "search", method = RequestMethod.POST)
+	public ModelAndView search(
+			@ModelAttribute("formModel") SicknessFormModel formModel, 
+			HttpServletRequest request) {
+		breadCrumbService.addNode(MessageBundle.getMessageBundle("breadcrumb.sickness.list"), 2, request);
+		
+		ModelAndView mav = new ModelAndView(Navigation.SICKNESS_LIST.getPath());
+		
+		if (searchFormHasErrors(formModel)) {
+			mav.addObject("error", true);
+			
+			StringBuilder message = new StringBuilder();
+
+			message.append(searchFormAdditionalValidation(formModel));
+			
+			mav.addObject("message", message.toString());
+			
+			return mav;
+		} 
+		
+		SearchResult<Sickness> result = sicknessService.search(formModel.getName(), formModel.getCid(), formModel.getSymptoms());
+		
+		List<Sickness> sicknessList = result.getResults();
+		
+		mav.addObject("sicknessList", sicknessList);
+		mav.addObject("name", formModel.getName());
+		mav.addObject("cid", formModel.getCid());
+		mav.addObject("symptomList", symptomService.list());
+		mav.addObject("symptoms", formModel.getSymptoms());
+		
+		return mav;
+	}
+	
+	private boolean searchFormHasErrors(SicknessFormModel formModel) {
+		boolean hasErrors = false;
+		
+		if (formModel != null) {
+			if (formModel.getName() != null && !formModel.getName().isEmpty() && formModel.getName().length() < 3) {
+				hasErrors = true;
+			}
+		}
+		
+		return hasErrors;
+	}
+	
+	private String searchFormAdditionalValidation(SicknessFormModel formModel) {
+		StringBuilder message = new StringBuilder();
+		
+		if (formModel != null) {
+			if (formModel.getName() != null && !formModel.getName().isEmpty() && formModel.getName().length() < 3) {
+				message.append(MessageBundle.getMessageBundle("sickness.name") + ": " + MessageBundle.getMessageBundle("common.search.default.min.size") + "\n <br />");
+			}
+		}
+		
+		return message.toString();
 	}
 	
     @InitBinder
