@@ -38,7 +38,6 @@
 		<input class="input-block-level" type="text" id="number" name="number" value="${clinic.number}" <c:if test="${readOnly}">readonly="true"</c:if> />
 	</div>
 </div>
-
 <div class="row-fluid">
 	<div class="span6">
 		<label for="city">
@@ -57,7 +56,6 @@
 		<input class="input-block-level" type="text" id="state" name="state" value="${clinic.state}" <c:if test="${readOnly}">readonly="true"</c:if> />
 	</div>
 </div>
-
 <div class="row-fluid">
 	<div class="span6">
 		<label for="phone">

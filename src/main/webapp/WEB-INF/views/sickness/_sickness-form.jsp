@@ -40,7 +40,7 @@
 	
 	<div class="span6">
 		<label for="category" class="control-label">
-			<s:message code="sickness.cid" /> TODO Categoria
+			<s:message code="sickness.category" /> 
 		</label>
 		<select id="category.id" name="category.id" class="input-block-level applyChosen" data-placeholder='<s:message code="common.select" />' <c:if test="${readOnly}">disabled="disabled"</c:if>>
 			<c:forEach items="${categoryList}" var="category">
@@ -57,8 +57,8 @@
 	<c:choose>
 		<c:when test="${not readOnly}">
 			<div class="span12">
-				<label for="name">
-					<s:message code="user.groups" /> TODO sintomas
+				<label for="symptom">
+					<s:message code="sickness.symptoms" /> 
 				</label>
 				<select name="symptoms" id="symptoms" size="5" multiple="multiple" class="input-block-level applyChosen" <c:if test="${readOnly}">disabled="disabled"</c:if> data-placeholder='<s:message code="common.select" />' >
 					<c:forEach items="${symptomList}" var="symptom">
@@ -78,7 +78,7 @@
 				<table class="table table-striped table-hover table-bordered">
 					<caption>
 						<strong>
-							<s:message code="user.groups" /> TODO sintomas
+							<s:message code="sickness.symptoms" /> 
 						</strong>
 					</caption>
 					<tbody>

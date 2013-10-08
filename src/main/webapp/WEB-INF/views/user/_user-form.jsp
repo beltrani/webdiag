@@ -167,14 +167,14 @@
 
 <div class="row-fluid">
 	<div class="span6">
-		<label for="name">
-			<s:message code="user.name" /> TODO CPF
+		<label for="cpf">
+			<s:message code="user.personalData.cpf" /> 
 		</label>
 		<form:input path="user.personalData.cpf" cssClass="input-block-level" readonly="${readOnly}" />
 	</div>
 	<div class="span6">
-		<label for="name">
-			<s:message code="user.name" /> TODO RG
+		<label for="rg">
+			<s:message code="user.personalData.rg" /> 
 		</label>
 		<form:input path="user.personalData.rg" cssClass="input-block-level" readonly="${readOnly}" />
 	</div>
@@ -182,8 +182,8 @@
 
 <div class="row-fluid">
 	<div class="span12">
-		<label for="name">
-			<s:message code="user.name" /> TODO Endereço
+		<label for="address">
+			<s:message code="user.personalData.address" /> 
 		</label>
 		<form:input path="user.personalData.address" cssClass="input-block-level" readonly="${readOnly}" />
 	</div>
@@ -191,20 +191,20 @@
 
 <div class="row-fluid">
 	<div class="span4">
-		<label for="name">
-			<s:message code="user.name" /> TODO Número
+		<label for="number">
+			<s:message code="user.personalData.number" /> 
 		</label>
 		<form:input path="user.personalData.number" cssClass="input-block-level" readonly="${readOnly}" />
 	</div>
 	<div class="span4">
-		<label for="name">
-			<s:message code="user.name" /> TODO Cidade
+		<label for="city">
+			<s:message code="user.personalData.city" /> 
 		</label>
 		<form:input path="user.personalData.city" cssClass="input-block-level" readonly="${readOnly}" />
 	</div>
 	<div class="span4">
-		<label for="name">
-			<s:message code="user.name" /> TODO Estado
+		<label for="state">
+			<s:message code="user.personalData.state" /> 
 		</label>
 		<form:input path="user.personalData.state" cssClass="input-block-level" readonly="${readOnly}" />
 	</div>
