@@ -34,6 +34,7 @@ public enum Navigation {
 	SICKNESS_NEW("sickness/new"),
 	SICKNESS_EDIT("sickness/edit"),
 	SICKNESS_VIEW("sickness/view"),
+	SICKNESS_SEARCH("sickness/search"),
 	
 	SPECIALTY_LIST("specialty/list"),
 	SPECIALTY_NEW("specialty/new"),

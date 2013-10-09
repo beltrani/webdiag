@@ -234,6 +234,17 @@ public class SicknessController extends BaseController<Sickness> {
 		return mav;
 	}
 	
+	@RequestMapping(value = "search-form", method = RequestMethod.GET)
+	public ModelAndView searchForm(HttpServletRequest request) {
+		breadCrumbService.addNode(MessageBundle.getMessageBundle("breadcrumb.sickness.search"), 1, request);
+		
+		ModelAndView mav = new ModelAndView(Navigation.SICKNESS_SEARCH.getPath());
+		
+		mav.addObject("symptomList", symptomService.list());
+		
+		return mav;
+	}
+	
 	private boolean searchFormHasErrors(SicknessFormModel formModel) {
 		boolean hasErrors = false;
 		

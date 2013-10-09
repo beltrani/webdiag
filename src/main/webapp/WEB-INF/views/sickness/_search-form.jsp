@@ -4,7 +4,7 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
-<form id="searchForm" class="form-search" action="<s:url value="/sickness/search"></s:url>" method="post">
+<form id="searchForm" action="<s:url value="/sickness/search"></s:url>" method="post">
 	<div class="row-fluid">
 		<div class="span3">
 			<label for="name" class="control-label">
