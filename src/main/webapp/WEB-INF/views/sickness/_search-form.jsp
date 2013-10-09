@@ -4,7 +4,7 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
-<form id="searchForm" action="<s:url value="/sickness/search"></s:url>" method="post">
+<form id="searchForm" class="form-search" action="<s:url value="/sickness/search"></s:url>" method="post">
 	<div class="row-fluid">
 		<div class="span3">
 			<label for="name" class="control-label">
@@ -14,15 +14,15 @@
 		</div>
 		
 		<div class="span2">
-			<label for="name" class="control-label">
-				TODO CID
+			<label for="cid" class="control-label">
+				<s:message code="sickness.cid" />
 			</label>
 			<input type="text" id="cid" name="cid" min="3" class="input-block-level" value="${cid}"/>
 		</div>
 		
 		<div class="span5">
 			<label for="keywords" class="control-label">
-				TODO Sintomas
+				<s:message code="sickness.symptoms" />
 			</label>
 			<select name="symptoms" id="symptoms" size="5" multiple="multiple" class="input-block-level applyChosen" <c:if test="${readOnly}">disabled="disabled"</c:if> data-placeholder='<s:message code="common.select" />' >
 				<c:forEach items="${symptomList}" var="symptom">

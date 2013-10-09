@@ -29,7 +29,13 @@
 						<s:message code="sickness.new" />
 					</a>
 				</li>
-			</security:authorize>                               
+			</security:authorize>   
+				<li>
+					<a href='<s:url value="/sickness/search-form"></s:url>'>
+						<i class="icon-search"></i>
+						<s:message code="common.search" />
+					</a>
+				</li>                          
 		</ul>
 	</li>           
 </ul>

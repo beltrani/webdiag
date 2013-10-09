@@ -26,7 +26,7 @@
 							<s:message code="sickness.description" />
 						</th>
 						<th>
-							TODO Sintomas
+							<s:message code="sickness.symptoms" />
 						</th>
 					
 						<security:authorize  ifAnyGranted="ROLE_ADMIN, ROLE_DOCTOR">
