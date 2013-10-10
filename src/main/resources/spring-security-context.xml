@@ -15,7 +15,11 @@ http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 		<security:intercept-url pattern="/resources/**" access="permitAll" />
 		<security:intercept-url pattern="/error/**" access="permitAll" />
 		<security:intercept-url pattern="/" access="permitAll" />
-		<security:intercept-url pattern="/**" access="isAuthenticated()" />
+		<security:intercept-url pattern="/sickness/list" access="permitAll" />
+		<security:intercept-url pattern="/sickness/search-form" access="permitAll" />
+		<security:intercept-url pattern="/symptom/list" access="permitAll" />
+		<security:intercept-url pattern="/category/list" access="permitAll" />
+		<security:intercept-url pattern="/specialty/list" access="permitAll" />
 		
 		<security:logout logout-url="/auth/logout" />
 	</security:http>
