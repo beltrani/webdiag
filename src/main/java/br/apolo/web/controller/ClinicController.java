@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.apolo.business.service.ClinicService;
+import br.apolo.business.service.DoctorService;
+import br.apolo.business.service.SicknessService;
 import br.apolo.common.exception.AccessDeniedException;
 import br.apolo.common.util.MessageBundle;
 import br.apolo.data.model.Clinic;
@@ -34,6 +36,13 @@ public class ClinicController extends BaseController<Clinic> {
 
 	@Autowired
 	private ClinicService clinicService;
+	
+	@Autowired
+	private SicknessService sicknessService;
+	
+	@Autowired
+	private DoctorService doctorService;
+	
 
 	@Override
 	@SecuredEnum(UserPermission.DOCTOR)
@@ -61,6 +70,8 @@ public class ClinicController extends BaseController<Clinic> {
 			mav.setViewName(getRedirectionPath(request, Navigation.CLINIC_NEW, Navigation.CLINIC_EDIT));
 			
 			mav.addObject("clinic", entity);
+			mav.addObject("sicknessList", sicknessService.list());
+			mav.addObject("doctorList", doctorService.list());
 			mav.addObject("readOnly", false);
 			mav.addObject("error", true);
 			
@@ -103,6 +114,8 @@ public class ClinicController extends BaseController<Clinic> {
 		Clinic clinic = clinicService.find(id);
 		
 		mav.addObject("clinic", clinic);
+		mav.addObject("sicknessList", sicknessService.list());
+		mav.addObject("doctorList", doctorService.list());
 		mav.addObject("readOnly", true);
 		
 		return mav;
@@ -125,6 +138,8 @@ public class ClinicController extends BaseController<Clinic> {
 		clinic.setLastUpdateDate(new Date());
 		
 		mav.addObject("clinic", clinic);
+		mav.addObject("sicknessList", sicknessService.list());
+		mav.addObject("doctorList", doctorService.list());
 		mav.addObject("readOnly", false);
 		
 		return mav;
@@ -144,6 +159,8 @@ public class ClinicController extends BaseController<Clinic> {
 		clinic.setLastUpdateDate(new Date());
 		
 		mav.addObject("clinic", clinic);
+		mav.addObject("sicknessList", sicknessService.list());
+		mav.addObject("doctorList", doctorService.list());
 		mav.addObject("readOnly", false);
 		
 		return mav;

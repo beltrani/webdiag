@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.apolo.business.model.SearchResult;
 import br.apolo.business.service.CategoryService;
+import br.apolo.business.service.ClinicService;
 import br.apolo.business.service.SicknessService;
 import br.apolo.business.service.SymptomService;
 import br.apolo.common.exception.AccessDeniedException;
@@ -47,6 +48,10 @@ public class SicknessController extends BaseController<Sickness> {
 	
 	@Autowired
 	private SymptomService symptomService;
+	
+	@Autowired
+	private ClinicService clinicService;
+	
 	
 	@Override
 	@RequestMapping(value = "list", method = RequestMethod.GET)
@@ -78,6 +83,7 @@ public class SicknessController extends BaseController<Sickness> {
 			mav.addObject("sickness", entity);
 			mav.addObject("categoryList", categoryService.list());
 			mav.addObject("symptomList", symptomService.list());
+			mav.addObject("clinicList", clinicService.list());
 			mav.addObject("readOnly", false);
 			mav.addObject("error", true);
 			
@@ -122,6 +128,7 @@ public class SicknessController extends BaseController<Sickness> {
 		mav.addObject("sickness", sickness);
 		mav.addObject("categoryList", categoryService.list());
 		mav.addObject("symptomList", symptomService.list());
+		mav.addObject("clinicList", clinicService.list());
 		mav.addObject("readOnly", true);
 		
 		return mav;
@@ -146,6 +153,7 @@ public class SicknessController extends BaseController<Sickness> {
 		mav.addObject("sickness", sickness);
 		mav.addObject("categoryList", categoryService.list());
 		mav.addObject("symptomList", symptomService.list());
+		mav.addObject("clinicList", clinicService.list());
 		mav.addObject("readOnly", false);
 		
 		return mav;
@@ -167,6 +175,7 @@ public class SicknessController extends BaseController<Sickness> {
 		mav.addObject("sickness", sickness);
 		mav.addObject("categoryList", categoryService.list());
 		mav.addObject("symptomList", symptomService.list());
+		mav.addObject("clinicList", clinicService.list());
 		mav.addObject("readOnly", false);
 		
 		return mav;

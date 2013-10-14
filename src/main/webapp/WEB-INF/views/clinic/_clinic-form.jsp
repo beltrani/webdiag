@@ -22,6 +22,108 @@
 </div>
 
 <div class="row-fluid">
+	<c:choose>
+		<c:when test="${not readOnly}">
+			<div class="span12">
+				<label for="sicknessAds">
+					<s:message code="clinic.sicknessAds" /> 
+				</label>
+				<select name="" id="sicknessAds" size="5" multiple="multiple" class="input-block-level applyChosen" <c:if test="${readOnly}">disabled="disabled"</c:if> data-placeholder='<s:message code="common.select" />' >
+					<c:forEach items="${sicknessList}" var="sicknessAds">
+						<option value="${sickness.id}" 
+							<c:forEach items="${clinic.sicknessAds}" var="clinicSickness">
+								<c:if test="${sicknessAds == clinicSickness}">
+									selected="selected"
+								</c:if>
+							</c:forEach>						
+						>${sickness.name}</option>
+					</c:forEach>
+				</select>
+			</div>
+		</c:when>
+		<c:otherwise>
+			<div class="span5">
+				<table class="table table-striped table-hover table-bordered">
+					<caption>
+						<strong>
+							<s:message code="clinic.sicknessAds" /> 
+						</strong>
+					</caption>
+					<tbody>
+						<c:forEach items="${clinic.sicknessAds}" var="sicknessAds">
+							<tr>
+								<td>
+									<security:authorize  ifAnyGranted="ROLE_ADMIN, ROLE_DOCTOR">
+										<a href='<s:url value="/sickness/view"></s:url>/${sickness.id}'>
+											${sickness.name}
+										</a>
+									</security:authorize>
+									
+									<security:authorize  ifNotGranted="ROLE_ADMIN, ROLE_DOCTOR">
+										${sickness.name}
+									</security:authorize>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</c:otherwise>
+	</c:choose>
+</div>
+
+<div class="row-fluid">
+	<c:choose>
+		<c:when test="${not readOnly}">
+			<div class="span12">
+				<label for="doctors">
+					<s:message code="clinic.doctors" /> 
+				</label>
+				<select name="" id="doctors" size="5" multiple="multiple" class="input-block-level applyChosen" <c:if test="${readOnly}">disabled="disabled"</c:if> data-placeholder='<s:message code="common.select" />' >
+					<c:forEach items="${doctorList}" var="doctors">
+						<option value="${doctor.id}" 
+							<c:forEach items="${clinic.doctors}" var="clinicDoctors">
+								<c:if test="${doctors == clinicDoctor}">
+									selected="selected"
+								</c:if>
+							</c:forEach>						
+						>${doctor.name}</option>
+					</c:forEach>
+				</select>
+			</div>
+		</c:when>
+		<c:otherwise>
+			<div class="span5">
+				<table class="table table-striped table-hover table-bordered">
+					<caption>
+						<strong>
+							<s:message code="clinic.doctors" /> 
+						</strong>
+					</caption>
+					<tbody>
+						<c:forEach items="${clinic.doctors}" var="doctors">
+							<tr>
+								<td>
+									<security:authorize  ifAnyGranted="ROLE_ADMIN, ROLE_DOCTOR">
+										<a href='<s:url value="/doctor/view"></s:url>/${doctor.id}'>
+											${doctor.name}
+										</a>
+									</security:authorize>
+									
+									<security:authorize  ifNotGranted="ROLE_ADMIN, ROLE_DOCTOR">
+										${doctor.name}
+									</security:authorize>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</c:otherwise>
+	</c:choose>
+</div>
+
+<div class="row-fluid">
 	<div class="span12">
 		<label for="address">
 			<s:message code="clinic.address" />
