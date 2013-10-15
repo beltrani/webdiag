@@ -10,8 +10,8 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class Sickness_ extends br.apolo.data.model.AuditableBaseEntity_ {
 
 	public static volatile ListAttribute<Sickness, Symptom> symptoms;
+	public static volatile ListAttribute<Sickness, Clinic> clinicsAds;
 	public static volatile SingularAttribute<Sickness, Category> category;
-	public static volatile SingularAttribute<Sickness, Clinic> clinicsAds;
 	public static volatile SingularAttribute<Sickness, String> description;
 	public static volatile SingularAttribute<Sickness, String> name;
 	public static volatile SingularAttribute<Sickness, String> cid;

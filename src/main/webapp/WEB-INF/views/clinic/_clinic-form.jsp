@@ -28,15 +28,15 @@
 				<label for="sicknessAds">
 					<s:message code="clinic.sicknessAds" /> 
 				</label>
-				<select name="" id="sicknessAds" size="5" multiple="multiple" class="input-block-level applyChosen" <c:if test="${readOnly}">disabled="disabled"</c:if> data-placeholder='<s:message code="common.select" />' >
-					<c:forEach items="${sicknessList}" var="sicknessAds">
-						<option value="${sickness.id}" 
+				<select name="sicknessAds" id="sicknessAds" size="5" multiple="multiple" class="input-block-level applyChosen" <c:if test="${readOnly}">disabled="disabled"</c:if> data-placeholder='<s:message code="common.select" />' >
+					<c:forEach items="${sicknessList}" var="sicknessAd">
+						<option value="${sicknessAd.id}" 
 							<c:forEach items="${clinic.sicknessAds}" var="clinicSickness">
-								<c:if test="${sicknessAds == clinicSickness}">
+								<c:if test="${sicknessAd == clinicSickness}">
 									selected="selected"
 								</c:if>
 							</c:forEach>						
-						>${sickness.name}</option>
+						>${sicknessAd.name}</option>
 					</c:forEach>
 				</select>
 			</div>
@@ -50,17 +50,17 @@
 						</strong>
 					</caption>
 					<tbody>
-						<c:forEach items="${clinic.sicknessAds}" var="sicknessAds">
+						<c:forEach items="${clinic.sicknessAds}" var="sicknessAd">
 							<tr>
 								<td>
 									<security:authorize  ifAnyGranted="ROLE_ADMIN, ROLE_DOCTOR">
-										<a href='<s:url value="/sickness/view"></s:url>/${sickness.id}'>
-											${sickness.name}
+										<a href='<s:url value="/sickness/view"></s:url>/${sicknessAd.id}'>
+											${sicknessAd.name}
 										</a>
 									</security:authorize>
 									
 									<security:authorize  ifNotGranted="ROLE_ADMIN, ROLE_DOCTOR">
-										${sickness.name}
+										${sicknessAd.name}
 									</security:authorize>
 								</td>
 							</tr>
@@ -79,11 +79,11 @@
 				<label for="doctors">
 					<s:message code="clinic.doctors" /> 
 				</label>
-				<select name="" id="doctors" size="5" multiple="multiple" class="input-block-level applyChosen" <c:if test="${readOnly}">disabled="disabled"</c:if> data-placeholder='<s:message code="common.select" />' >
-					<c:forEach items="${doctorList}" var="doctors">
+				<select name="doctors" id="doctors" size="5" multiple="multiple" class="input-block-level applyChosen" <c:if test="${readOnly}">disabled="disabled"</c:if> data-placeholder='<s:message code="common.select" />' >
+					<c:forEach items="${doctorList}" var="doctor">
 						<option value="${doctor.id}" 
-							<c:forEach items="${clinic.doctors}" var="clinicDoctors">
-								<c:if test="${doctors == clinicDoctor}">
+							<c:forEach items="${clinic.doctors}" var="clinicDoctor">
+								<c:if test="${doctor == clinicDoctor}">
 									selected="selected"
 								</c:if>
 							</c:forEach>						
@@ -101,7 +101,7 @@
 						</strong>
 					</caption>
 					<tbody>
-						<c:forEach items="${clinic.doctors}" var="doctors">
+						<c:forEach items="${clinic.doctors}" var="doctor">
 							<tr>
 								<td>
 									<security:authorize  ifAnyGranted="ROLE_ADMIN, ROLE_DOCTOR">

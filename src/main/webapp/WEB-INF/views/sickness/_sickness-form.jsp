@@ -112,14 +112,14 @@
 					<s:message code="sickness.clinicsAds" /> 
 				</label>
 				<select name="clinicsAds" id="clinicsAds" size="5" multiple="multiple" class="input-block-level applyChosen" <c:if test="${readOnly}">disabled="disabled"</c:if> data-placeholder='<s:message code="common.select" />' >
-					<c:forEach items="${clinicList}" var="clinicsAds">
-						<option value="${clinic.id}" 
-							<c:forEach items="${sickness.clinicsAds}" var="sicknessClinicsAds">
-								<c:if test="${clinic == sicknessClinicsAds}">
+					<c:forEach items="${clinicList}" var="clinicsAd">
+						<option value="${clinicsAd.id}" 
+							<c:forEach items="${sickness.clinicsAds}" var="sicknessClinicsAd">
+								<c:if test="${clinicsAd == sicknessClinicsAd}">
 									selected="selected"
 								</c:if>
 							</c:forEach>						
-						>${clinic.name}</option>
+						>${clinicsAd.name}</option>
 					</c:forEach>
 				</select>
 			</div>
@@ -133,17 +133,17 @@
 						</strong>
 					</caption>
 					<tbody>
-						<c:forEach items="${sickness.clinicsAds}" var="clinicsAds">
+						<c:forEach items="${sickness.clinicsAds}" var="clinicsAd">
 							<tr>
 								<td>
 									<security:authorize  ifAnyGranted="ROLE_ADMIN, ROLE_DOCTOR">
-										<a href='<s:url value="/clinic/view"></s:url>/${clinic.id}'>
-											${clinic.name}
+										<a href='<s:url value="/clinic/view"></s:url>/${clinicsAd.id}'>
+											${clinicsAd.name}
 										</a>
 									</security:authorize>
 									
 									<security:authorize  ifNotGranted="ROLE_ADMIN, ROLE_DOCTOR">
-										${clinic.name}
+										${clinicsAd.name}
 									</security:authorize>
 								</td>
 							</tr>

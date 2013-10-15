@@ -6,7 +6,6 @@ import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -14,6 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import br.apolo.common.util.InputLength;
 import br.apolo.data.entitylistener.AuditLogListener;
@@ -40,13 +42,15 @@ public class Sickness extends AuditableBaseEntity {
 	@Size(max = InputLength.DESCR)
 	private String description;
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name = "sickness_symptom", 
 			joinColumns = { @JoinColumn(name = "sickness_id", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "symptom_id", nullable = false, updatable = false) })
 	private List<Symptom>symptoms;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name = "clinic_sickness", 
 			joinColumns = { @JoinColumn(name = "clinic_id", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "sickness_id", nullable = false, updatable = false) })

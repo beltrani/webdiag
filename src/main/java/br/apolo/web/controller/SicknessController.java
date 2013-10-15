@@ -64,6 +64,7 @@ public class SicknessController extends BaseController<Sickness> {
 		
 		mav.addObject("sicknessList", sicknessList);
 		mav.addObject("symptomList", symptomService.list());
+		mav.addObject("clinicList", clinicService.list());
 		
 		return mav;
 	}
@@ -298,6 +299,27 @@ public class SicknessController extends BaseController<Sickness> {
                 }
 
                 return id != null ? symptomService.find(id) : null;
+            }
+          });
+        
+        binder.registerCustomEditor(List.class, "clinicsAds", new CustomCollectionEditor(List.class) {
+            @Override
+            protected Object convertElement(Object element) {
+                Long id = null;
+
+                if(element instanceof String && !((String)element).equals("")){
+                    //From the JSP 'element' will be a String
+                    try{
+                        id = Long.parseLong((String) element);
+                    } catch (NumberFormatException e) {
+                        log.error("Element was " + ((String) element), e);
+                    }
+                } else if(element instanceof Long) {
+                    //From the database 'element' will be a Long
+                    id = (Long) element;
+                }
+
+                return id != null ? clinicService.find(id) : null;
             }
           });
     }

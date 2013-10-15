@@ -15,6 +15,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import br.apolo.common.util.InputLength;
 import br.apolo.data.entitylistener.AuditLogListener;
 
@@ -42,13 +45,15 @@ public class Doctor extends AuditableBaseEntity {
 	private String state;
 
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name = "doctor_specialty", 
 			joinColumns = { @JoinColumn(name = "doctor_id", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "specialty_id", nullable = false, updatable = false) })
 	private List<Specialty>specialties;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name = "clinic_doctor", 
 			joinColumns = { @JoinColumn(name = "clinic_id", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "doctor_id", nullable = false, updatable = false) })

@@ -1,18 +1,20 @@
 package br.apolo.data.model;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import br.apolo.common.util.InputLength;
 import br.apolo.data.entitylistener.AuditLogListener;
@@ -55,17 +57,19 @@ public class Clinic extends AuditableBaseEntity {
 	@Size(min = 1, max = InputLength.STATE)
 	private String state;
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name = "clinic_doctor", 
 			joinColumns = { @JoinColumn(name = "clinic_id", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "doctor_id", nullable = false, updatable = false) })
-	private List<Doctor>doctors;
+	private Set<Doctor>doctors;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name = "clinic_sickness", 
 			joinColumns = { @JoinColumn(name = "clinic_id", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "sickness_id", nullable = false, updatable = false) })
-	private List<Sickness>sicknessAds;
+	private Set<Sickness>sicknessAds;
 
 	public String getAddress() {
 		return address;
@@ -99,19 +103,19 @@ public class Clinic extends AuditableBaseEntity {
 		this.state = state;
 	}
 
-	public List<Doctor> getDoctors() {
+	public Set<Doctor> getDoctors() {
 		return doctors;
 	}
 
-	public void setDoctors(List<Doctor> doctors) {
+	public void setDoctors(Set<Doctor> doctors) {
 		this.doctors = doctors;
 	}
 
-	public List<Sickness> getSicknessAds() {
+	public Set<Sickness> getSicknessAds() {
 		return sicknessAds;
 	}
 
-	public void setSicknessAds(List<Sickness> sicknessAds) {
+	public void setSicknessAds(Set<Sickness> sicknessAds) {
 		this.sicknessAds = sicknessAds;
 	}
 
