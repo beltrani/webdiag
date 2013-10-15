@@ -133,6 +133,58 @@
 	</c:choose>
 </div>
 
+<div class="row-fluid">
+	<c:choose>
+		<c:when test="${not readOnly}">
+			<div class="span12">
+				<label for="clinic">
+					<s:message code="doctor.clinics" />
+				</label>
+				
+				<form:select path="doctor.clinics" size="5" multiple="multiple" cssClass="input-block-level applyChosen">
+					<c:forEach items="${clinicList}" var="clinic">
+						<option value="${clinic.id}" 
+							<c:forEach items="${doctor.clinics}" var="doctorClinics">
+								<c:if test="${clinic == doctorClinics}">
+									selected="selected"
+								</c:if>
+							</c:forEach>						
+						>${clinic.name}</option>
+					</c:forEach>					
+				</form:select>
+				
+			</div>
+		</c:when>
+		<c:otherwise>
+			<div class="span5">
+				<table class="table table-striped table-hover table-bordered">
+					<caption>
+						<strong>
+							<s:message code="doctor.clinics" />
+						</strong>
+					</caption>
+					<tbody>
+						<c:forEach items="${doctor.clinics}" var="clinic">
+							<tr>
+								<td>
+									<security:authorize  ifAnyGranted="ROLE_ADMIN, ROLE_USER_LIST, ROLE_USER_PERMISSION_LIST, ROLE_USER_PERMISSION_VIEW">
+										<a href='<s:url value="/clinic/view"></s:url>/${clinic.id}'>
+											${clinic.name}
+										</a>
+									</security:authorize>
+									
+									<security:authorize  ifNotGranted="ROLE_ADMIN, ROLE_USER_LIST, ROLE_USER_PERMISSION_LIST, ROLE_USER_PERMISSION_VIEW">
+										${clinic.name}
+									</security:authorize>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</c:otherwise>
+	</c:choose>
+</div>
 
 <br />
 

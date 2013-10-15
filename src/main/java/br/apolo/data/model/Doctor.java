@@ -48,6 +48,12 @@ public class Doctor extends AuditableBaseEntity {
 			inverseJoinColumns = { @JoinColumn(name = "specialty_id", nullable = false, updatable = false) })
 	private List<Specialty>specialties;
 	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "clinic_doctor", 
+			joinColumns = { @JoinColumn(name = "clinic_id", nullable = false, updatable = false) }, 
+			inverseJoinColumns = { @JoinColumn(name = "doctor_id", nullable = false, updatable = false) })
+	private List<Clinic>clinics;
+	
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id", nullable = false)
 	private User user;
@@ -91,6 +97,14 @@ public class Doctor extends AuditableBaseEntity {
 	public void setUser(User user) {
 		this.user = user;
 		
+	}
+
+	public List<Clinic> getClinics() {
+		return clinics;
+	}
+
+	public void setClinics(List<Clinic> clinics) {
+		this.clinics = clinics;
 	}
 
 }

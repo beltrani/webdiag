@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.apolo.business.service.ClinicService;
 import br.apolo.business.service.DoctorService;
 import br.apolo.business.service.SpecialtyService;
 import br.apolo.business.service.UserGroupService;
@@ -49,6 +50,9 @@ public class DoctorController extends BaseController<Doctor> {
 	
 	@Autowired
 	SpecialtyService specialtyService;
+	
+	@Autowired
+	ClinicService clinicService;
 
 	@Override
 	@SecuredEnum(UserPermission.DOCTOR)
@@ -79,6 +83,7 @@ public class DoctorController extends BaseController<Doctor> {
 			mav.addObject("readOnly", false);
 			mav.addObject("groupList", userGroupService.list());
 			mav.addObject("specialtyList", specialtyService.list());
+			mav.addObject("clinicList", clinicService.list());
 			mav.addObject("error", true);
 			
 			StringBuilder message = new StringBuilder();
@@ -120,6 +125,7 @@ public class DoctorController extends BaseController<Doctor> {
 		Doctor doctor = doctorService.find(id);
 		
 		mav.addObject("doctor", doctor);
+		mav.addObject("clinicList", clinicService.list());
 		mav.addObject("readOnly", true);
 		
 		return mav;
@@ -149,6 +155,7 @@ public class DoctorController extends BaseController<Doctor> {
 		mav.addObject("doctor", doctor);
 		mav.addObject("groupList", userGroupService.list());
 		mav.addObject("specialtyList", specialtyService.list());
+		mav.addObject("clinicList", clinicService.list());
 		mav.addObject("readOnly", false);
 		
 		return mav;
@@ -170,6 +177,7 @@ public class DoctorController extends BaseController<Doctor> {
 		mav.addObject("doctor", doctor);
 		mav.addObject("groupList", userGroupService.list());
 		mav.addObject("specialtyList", specialtyService.list());
+		mav.addObject("clinicList", clinicService.list());
 		mav.addObject("readOnly", false);
 		mav.addObject("editing", true);
 		

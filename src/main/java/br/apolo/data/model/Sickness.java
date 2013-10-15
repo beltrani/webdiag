@@ -46,6 +46,12 @@ public class Sickness extends AuditableBaseEntity {
 			inverseJoinColumns = { @JoinColumn(name = "symptom_id", nullable = false, updatable = false) })
 	private List<Symptom>symptoms;
 	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "clinic_sickness", 
+			joinColumns = { @JoinColumn(name = "clinic_id", nullable = false, updatable = false) }, 
+			inverseJoinColumns = { @JoinColumn(name = "sickness_id", nullable = false, updatable = false) })
+	private List<Clinic>clinicsAds;
+	
 	@ManyToOne
 	@JoinColumn(name = "category_id", nullable = true)
 	private Category category;
@@ -90,6 +96,14 @@ public class Sickness extends AuditableBaseEntity {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public List<Clinic> getClinicsAds() {
+		return clinicsAds;
+	}
+
+	public void setClinicsAds(List<Clinic> clinicsAds) {
+		this.clinicsAds = clinicsAds;
 	}
 
 }
