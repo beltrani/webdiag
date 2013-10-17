@@ -28,7 +28,10 @@
 						<th>
 							<s:message code="sickness.symptoms" />
 						</th>
-					
+						<th>
+							<s:message code="sickness.clinicsAds" />
+						</th>
+								
 						<security:authorize  ifAnyGranted="ROLE_ADMIN, ROLE_DOCTOR">
 							<th>
 								<s:message code="common.actions" />
@@ -69,6 +72,26 @@
 													</security:authorize>
 													<security:authorize  ifNotGranted="ROLE_ADMIN, ROLE_DOCTOR">
 														${symptom.name}
+													</security:authorize>
+												</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</td>
+							<td>
+								<table class="table table-condensed table-bordered">
+									<tbody>
+										<c:forEach items="${sickness.clinicsAds}" var="clinic">
+											<tr>
+												<td>
+													<security:authorize  ifAnyGranted="ROLE_ADMIN, ROLE_DOCTOR">
+														<a href='<s:url value="/clinic/view"></s:url>/${clinic.id}' class="btn btn-link">
+															${clinic.name}
+														</a>
+													</security:authorize>
+													<security:authorize  ifNotGranted="ROLE_ADMIN, ROLE_DOCTOR">
+														${clinic.name}
 													</security:authorize>
 												</td>
 											</tr>
