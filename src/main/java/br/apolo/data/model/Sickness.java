@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -59,7 +60,14 @@ public class Sickness extends AuditableBaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "category_id", nullable = true)
 	private Category category;
-
+	
+	@OneToOne
+	@JoinColumn(name = "old_sickness_id", nullable = true)
+	private Sickness oldSickness;
+	
+	@OneToOne
+	@JoinColumn(name = "new_sickness_id", nullable = true)
+	private Sickness newSickness;
 
 	public String getName() {
 		return name;
@@ -100,6 +108,22 @@ public class Sickness extends AuditableBaseEntity {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public Sickness getOldSickness() {
+		return oldSickness;
+	}
+
+	public void setOldSickness(Sickness oldSickness) {
+		this.oldSickness = oldSickness;
+	}
+
+	public Sickness getNewSickness() {
+		return newSickness;
+	}
+
+	public void setNewSickness(Sickness newSickness) {
+		this.newSickness = newSickness;
 	}
 
 	public List<Clinic> getClinicsAds() {
