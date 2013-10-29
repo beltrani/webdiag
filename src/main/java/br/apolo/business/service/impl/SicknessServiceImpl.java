@@ -1,5 +1,6 @@
 package br.apolo.business.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -86,6 +87,38 @@ public class SicknessServiceImpl extends BaseServiceImpl<Sickness> implements Si
 
 		return result;
 	}
+
+	@Override
+	public List<Sickness> getAllHistory(Long id) {
+		List<Sickness> result = new ArrayList<Sickness>();
+		
+		if (id != null) {
+			// consulta a doenca na base
+			Sickness atualSickness = sicknessRepository.findOne(id);
+			
+			if (atualSickness != null && atualSickness.getOldSickness() != null) {
+				// caso a doenca possua historico, preenche lista com cada edicao.
+				getHistory(result, atualSickness.getOldSickness().getId());
+			}			
+		}
+		
+		return result;
+	}
 	
+	
+	private void getHistory(List<Sickness> result, Long id) {
+		// consulta doenca historica na base
+		Sickness atualSickness = sicknessRepository.findOne(id);
+		
+		if (atualSickness != null) {
+			// inclui a doenca na lista
+			result.add(atualSickness);
+			
+			// caso ainda existam edicoes, realiza chamada recursiva
+			if (atualSickness.getOldSickness() != null) {
+				getHistory(result, atualSickness.getOldSickness().getId());	
+			}
+		}
+	}
 	
 }

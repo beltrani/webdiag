@@ -126,7 +126,11 @@ public class SicknessController extends BaseController<Sickness> {
 		
 		Sickness sickness = sicknessService.find(id);
 		
-		mav.addObject("sickness", sickness);
+		if (sickness != null) {
+			mav.addObject("sickness", sickness);
+			mav.addObject("sicknessHistoryList", sicknessService.getAllHistory(sickness.getId()));			
+		}
+
 		mav.addObject("categoryList", categoryService.list());
 		mav.addObject("symptomList", symptomService.list());
 		mav.addObject("clinicList", clinicService.list());
