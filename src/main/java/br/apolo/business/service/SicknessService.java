@@ -9,5 +9,7 @@ import br.apolo.data.model.Symptom;
 public interface SicknessService extends BaseService<Sickness> {
 
 	SearchResult<Sickness> search(String name, String cid, List<Symptom> symptoms);
+	
+	List<Sickness> getAllHistory(Long id);
 
 }

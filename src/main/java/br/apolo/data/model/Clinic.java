@@ -1,6 +1,6 @@
 package br.apolo.data.model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
@@ -62,15 +62,8 @@ public class Clinic extends AuditableBaseEntity {
 	@JoinTable(name = "clinic_doctor", 
 			joinColumns = { @JoinColumn(name = "clinic_id", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "doctor_id", nullable = false, updatable = false) })
-	private Set<Doctor>doctors;
+	private List<Doctor>doctors;
 	
-	@ManyToMany
-	@LazyCollection(LazyCollectionOption.FALSE)
-	@JoinTable(name = "clinic_sickness", 
-			joinColumns = { @JoinColumn(name = "clinic_id", nullable = false, updatable = false) }, 
-			inverseJoinColumns = { @JoinColumn(name = "sickness_id", nullable = false, updatable = false) })
-	private Set<Sickness>sicknessAds;
-
 	public String getAddress() {
 		return address;
 	}
@@ -103,20 +96,12 @@ public class Clinic extends AuditableBaseEntity {
 		this.state = state;
 	}
 
-	public Set<Doctor> getDoctors() {
+	public List<Doctor> getDoctors() {
 		return doctors;
 	}
 
-	public void setDoctors(Set<Doctor> doctors) {
+	public void setDoctors(List<Doctor> doctors) {
 		this.doctors = doctors;
-	}
-
-	public Set<Sickness> getSicknessAds() {
-		return sicknessAds;
-	}
-
-	public void setSicknessAds(Set<Sickness> sicknessAds) {
-		this.sicknessAds = sicknessAds;
 	}
 
 	public String getName() {

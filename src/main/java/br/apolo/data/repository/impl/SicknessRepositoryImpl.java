@@ -37,6 +37,8 @@ public class SicknessRepositoryImpl extends BaseRepotitoryImpl<Sickness> impleme
 				queryString.append(" AND sSymptom IN (:symptoms)");	
 			}
 			
+			queryString.append(" AND s.newSickness IS NULL ");	
+			
 			queryString.append(" ) ");
 			
 			queryString.append(" ORDER BY s.name ");
