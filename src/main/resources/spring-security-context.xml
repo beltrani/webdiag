@@ -20,8 +20,10 @@ http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 		<security:intercept-url pattern="/symptom/list" access="permitAll" />
 		<security:intercept-url pattern="/category/list" access="permitAll" />
 		<security:intercept-url pattern="/specialty/list" access="permitAll" />
-		<security:intercept-url pattern="/clinic/view" access="permitAll" />
-		<security:intercept-url pattern="/doctor/view" access="permitAll" />
+		<security:intercept-url pattern="/clinic/view/1" access="permitAll" />
+		<security:intercept-url pattern="/doctor/view/1" access="permitAll" />
+		<security:intercept-url pattern="/clinic/list" access="permitAll" />
+		<security:intercept-url pattern="/doctor/list" access="permitAll" />
 		
 		<security:logout logout-url="/auth/logout" />
 	</security:http>
