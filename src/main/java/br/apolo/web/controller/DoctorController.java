@@ -211,6 +211,8 @@ public class DoctorController extends BaseController<Doctor> {
 		return jsonSubject.toString();
 	}
 	
+	
+	
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(Set.class, "user.groups", new CustomCollectionEditor(Set.class) {
@@ -234,6 +236,8 @@ public class DoctorController extends BaseController<Doctor> {
             }
           });
         
+   
+        
         binder.registerCustomEditor(List.class, "specialties", new CustomCollectionEditor(List.class) {
             @Override
             protected Object convertElement(Object element) {
@@ -252,6 +256,27 @@ public class DoctorController extends BaseController<Doctor> {
                 }
 
                 return id != null ? specialtyService.find(id) : null;
+            }
+          });
+        
+        binder.registerCustomEditor(List.class, "clinics", new CustomCollectionEditor(List.class) {
+            @Override
+            protected Object convertElement(Object element) {
+                Long id = null;
+
+                if(element instanceof String && !((String)element).equals("")){
+                    //From the JSP 'element' will be a String
+                    try{
+                        id = Long.parseLong((String) element);
+                    } catch (NumberFormatException e) {
+                        log.error("Element was " + ((String) element), e);
+                    }
+                } else if(element instanceof Long) {
+                    //From the database 'element' will be a Long
+                    id = (Long) element;
+                }
+
+                return id != null ? clinicService.find(id) : null;
             }
           });
     }
